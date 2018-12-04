@@ -1,12 +1,16 @@
+Copied from https://www.npmjs.com/package/react-native-alipay
+
+---
+
 ## 安装
 
-首先安装rnpm
+首先安装 rnpm
 
 ```
 npm install -g rnpm
 ```
 
-推荐通过npm安装,譬如解压本文件夹到`../react-native-alipay`,则可以在项目文件下运行
+推荐通过 npm 安装,譬如解压本文件夹到`../react-native-alipay`,则可以在项目文件下运行
 
 ```
 npm install react-native-alipay
@@ -43,13 +47,13 @@ iOS: 添加其它依赖库
 
 node_modules/react-native-alipay/ios/SDK/AlipaySDK.bundle
 
-node_modules/react-native-alipay/ios/SDK/AlipaySDK.framework (此文件也会自动添加到Link Binary With Libraries里)
+node_modules/react-native-alipay/ios/SDK/AlipaySDK.framework (此文件也会自动添加到 Link Binary With Libraries 里)
 
-在Build Settings中的Framework Search Paths中,增加:
+在 Build Settings 中的 Framework Search Paths 中,增加:
 
-$(SRCROOT)/../node_modules/react-native-alipay/ios/SDK
+\$(SRCROOT)/../node_modules/react-native-alipay/ios/SDK
 
-以下依赖库需要手动添加到Build Phases的Link Binary With Libraries中:
+以下依赖库需要手动添加到 Build Phases 的 Link Binary With Libraries 中:
 
 ![](https://img.alicdn.com/top/i1/LB1PlBHKpXXXXXoXXXXXXXXXXXX)
 
@@ -102,7 +106,7 @@ iOS: 添加配置
 
 ```
 
-另外为了兼容iOS 9.0以上设备,还需在Xcode中修改`Info.plist`
+另外为了兼容 iOS 9.0 以上设备,还需在 Xcode 中修改`Info.plist`
 
 以文本方式打开,增加以下内容:
 
@@ -113,11 +117,11 @@ iOS: 添加配置
 	</array>
 ```
 
-或者在Xcode中打开`Info.plist`,增加类型为`Array`的项`LSApplicationQueriesSchemes`,并在其下增加`String`类型的项:`alipay`
+或者在 Xcode 中打开`Info.plist`,增加类型为`Array`的项`LSApplicationQueriesSchemes`,并在其下增加`String`类型的项:`alipay`
 
-在工程设置的Info项目里,最底部添加URL Types,
+在工程设置的 Info 项目里,最底部添加 URL Types,
 
-identifier填写alipay,URL Schemas填写一个不易冲突的,包含应用标识的字符串.
+identifier 填写 alipay,URL Schemas 填写一个不易冲突的,包含应用标识的字符串.
 
 ## API
 
@@ -125,17 +129,17 @@ identifier填写alipay,URL Schemas填写一个不易冲突的,包含应用标识
 
 调用支付接口进行支付
 
-* orderInfo 一个字符串,为服务器返回的订单详情,多个key=value字符串用&分隔
-* showLoading 是否显示切换进度条,默认为false,推荐填写true. iOS此选项不生效
+- orderInfo 一个字符串,为服务器返回的订单详情,多个 key=value 字符串用&分隔
+- showLoading 是否显示切换进度条,默认为 false,推荐填写 true. iOS 此选项不生效
 
 返回对象:
 
-* resultStatus 结果状态码,类型为字符串,为'9000'表示支付成功,为'8000'表示支付状态需与服务器确认,其余均表示支付失败,包括用户主动取消
-    参考[支付宝文档-客户端返回码](https://doc.open.alipay.com/doc2/detail?treeId=59&articleId=103671&docType=1)
-* result 本次操作返回的结果数据,详情参考[支付宝文档-同步通知参数说明](https://doc.open.alipay.com/doc2/detail.htm?spm=a219a.7386797.0.0.awIjtX&treeId=59&articleId=103665&docType=1)
-* memo 保留参数，一般无内容。
+- resultStatus 结果状态码,类型为字符串,为'9000'表示支付成功,为'8000'表示支付状态需与服务器确认,其余均表示支付失败,包括用户主动取消
+  参考[支付宝文档-客户端返回码](https://doc.open.alipay.com/doc2/detail?treeId=59&articleId=103671&docType=1)
+- result 本次操作返回的结果数据,详情参考[支付宝文档-同步通知参数说明](https://doc.open.alipay.com/doc2/detail.htm?spm=a219a.7386797.0.0.awIjtX&treeId=59&articleId=103665&docType=1)
+- memo 保留参数，一般无内容。
 
-> 同步返回的数据，对于商户在服务端没有收到异步通知的时候，可以依赖服务端对同步返回的结果来进行判断是否支付成功。同步返回的结果中，sign字段描述了请求的原始数据和服务端支付的状态一起拼接的签名信息。验证这个过程包括两个部分：1、原始数据是否跟商户请求支付的原始数据一致（必须验证这个）；2、验证这个签名是否能通过。上述1、2通过后，在sign字段中success=true才是可信的。
+> 同步返回的数据，对于商户在服务端没有收到异步通知的时候，可以依赖服务端对同步返回的结果来进行判断是否支付成功。同步返回的结果中，sign 字段描述了请求的原始数据和服务端支付的状态一起拼接的签名信息。验证这个过程包括两个部分：1、原始数据是否跟商户请求支付的原始数据一致（必须验证这个）；2、验证这个签名是否能通过。上述 1、2 通过后，在 sign 字段中 success=true 才是可信的。
 
 ## 示例
 
