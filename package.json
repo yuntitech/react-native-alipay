@@ -13,5 +13,6 @@
     "alipay"
   ],
   "author": "tdzl2003",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://www.npmjs.com/package/react-native-alipay"
 }
