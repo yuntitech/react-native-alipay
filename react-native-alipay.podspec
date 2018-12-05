@@ -18,6 +18,7 @@ Pod::Spec.new do |s|
   s.source_files   = "ios/RCTAlipay/**/*.{h,m}"
 
   s.frameworks     = 'SystemConfiguration', 'CoreTelephony', 'QuartzCore', 'CoreText', 'CoreGraphics', 'UIKit', 'Foundation', 'CFNetwork', 'CoreMotion'
+  s.vendored_framework = 'ios/SDK/AlipaySDK.framework'
   
   s.dependency 'React'
 end
