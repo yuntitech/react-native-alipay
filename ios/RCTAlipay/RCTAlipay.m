@@ -57,6 +57,11 @@ RCT_EXPORT_MODULE(RCTAlipay);
 {
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 - (void)handleOpenURL:(NSNotification *)note
 {
     NSDictionary *userInfo = note.userInfo;
