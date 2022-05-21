@@ -12,7 +12,7 @@
 
     <application
         android:allowBackup="true">
-        <activity
+        <!-- <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
@@ -23,7 +23,7 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" >
-        </activity>
+        </activity> -->
 
 
 
